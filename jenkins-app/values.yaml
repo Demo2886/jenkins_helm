@@ -1,0 +1,31 @@
+namespace: ci-cd-helm
+name: jenkins-helm
+image: jfrog.it-academy.by/public/jenkins-ci:anefedin
+mail: Demo2886@yandex.by
+
+
+service:
+ master:
+   port: 8080
+   targetPort: 8080
+ slave:
+   port: 50000 
+   targetPort: 50000 
+
+
+requests:
+  cpu: 1000m
+  memory: 1000Mi
+limits:
+  cpu: 2300m
+  memory: 2300Mi
+
+nfs:
+  server: 192.168.37.105
+  path: /mnt/IT-Academy/nfs-data/sa2-20-22/alexandr_nefedin/jenkins
+
+ingress:
+  class: nginx
+  host: jenkins-helm.k8s-37.sa
+  alias: jenkins-helm.k8s-38.sa
+  port: 8080
